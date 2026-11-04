@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE ROBUX - Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">⬛ FREE ROBUX ⬛</div>
+        <p>THE ULTIMATE ROBUX GENERATOR</p>
+    </header>
+
+    <div class="container">
+
+        <div class="hero">
+            <h1>GET 100,000 FREE ROBUX!</h1>
+            <p>Want to buy some new items?
+            Get free Robux in seconds!</p>
+
+            <div class="coin">💰</div>
+        </div>
+
+        <div class="generator">
+
+            <h2>ROBUX GENERATOR</h2>
+
+            <p style="color:#aaa; margin-top:10px">
+                Enter username below to start.
+            </p>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter a fictional username"
+            >
+
+            <select id="amount">
+                <option value="100">100 Robux</option>
+                <option value="500">500 Robux</option>
+                <option value="1000">1,000 Robux</option>
+                <option value="5000">5,000 Robux</option>
+                <option value="10000">10,000 Robux</option>
+            </select>
+
+            <button onclick="generate()">
+                GENERATE FREE ROBUX
+            </button>
+
+            <div class="status" id="status"></div>
+
+            <div class="progress" id="progress">
+                <div class="bar" id="bar"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <script>
+
+        function generate() {
+
+            const username =
+                document.getElementById("username").value;
+
+            if (!username.trim()) {
+                document.getElementById("status").innerText =
+                    "Please enter a fictional username!";
+                return;
+            }
+
+            const status =
+                document.getElementById("status");
+
+            const progress =
+                document.getElementById("progress");
+
+            const bar =
+                document.getElementById("bar");
+
+            const button =
+                document.querySelector(".generator button");
+
+            button.disabled = true;
+            button.innerText = "GENERATING...";
+
+            progress.style.display = "block";
+            bar.style.width = "0%";
+
+            let steps = [
+                "Connecting to Roblox servers...",
+                "Searching for account...",
+                "Generating Robux...",
+                "Almost done..."
+            ];
+
+            let i = 0;
+
+            status.innerText = steps[0];
+
+            let timer = setInterval(() => {
+
+                i++;
+
+                bar.style.width = (i * 25) + "%";
+
+                if (i < steps.length) {
+                    status.innerText = steps[i];
+                } else {
+
+                    clearInterval(timer);
+
+                    status.innerText = "Robux generated!";
+
+                    setTimeout(() => {
+                        window.location.href =
+                            "verification.html";
+                    }, 800);
+
+                }
+
+            }, 900);
+
+        }
+
+    </script>
+
+</body>
+</html>
